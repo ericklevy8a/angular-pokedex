@@ -4,8 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve -o",
-    "build": "ng build --base-ref='https://ericklevy8a.github.io/Pokedex/'",
-    "deploy": "nph --dir='dist/Pokedex'",
+    "build": "ng build --base-href=https://ericklevy8a.github.io/Pokedex/",
+    "deploy": "ngh --dir=dist/Pokedex",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
