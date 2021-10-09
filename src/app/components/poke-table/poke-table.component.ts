@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 import { Router } from '@angular/router';
 
 import { PokemonService } from 'src/app/services/pokemon.service';
@@ -12,13 +13,12 @@ import { PokemonService } from 'src/app/services/pokemon.service';
 })
 export class PokeTableComponent implements OnInit {
 
-  displayedColumns: string[] = ['position', 'image', 'name'];
   data: any[] = [];
   dataSource = new MatTableDataSource<any>(this.data);
+  displayedColumns: string[] = ['id', 'name', 'image', 'type'];
 
   @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
-
-  pokemons = [];
+  @ViewChild(MatSort, { static: true }) sort!: MatSort;
 
   constructor(private pokemonService: PokemonService, private router: Router) { }
 
@@ -27,19 +27,22 @@ export class PokeTableComponent implements OnInit {
   }
 
   getPokemons() {
-    let pokemonData;
+    let pokemonData = {};
 
-    for (let i = 1; i <= 150; i++) {
-      this.pokemonService.getPokemons(i).subscribe(
+    for (let i = 1; i <= 898; i++) {
+      this.pokemonService.getPokemon(i).subscribe(
         res => {
           pokemonData = {
-            position: i,
+            position: res.id,
+            id: res.id,
+            name: res.name,
             image: res.sprites.front_default,
-            name: res.name
+            type: res.types[0].type.name
           };
           this.data.push(pokemonData);
           this.dataSource = new MatTableDataSource<any>(this.data);
           this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
         },
         err => {
           console.log(err);
@@ -57,7 +60,7 @@ export class PokeTableComponent implements OnInit {
   }
 
   getRow(row: any) {
-    this.router.navigateByUrl(`/pokeDetail/${row.position}`);
+    this.router.navigateByUrl(`/detail/${row.position}`);
   }
 
 }

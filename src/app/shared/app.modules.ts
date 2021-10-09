@@ -11,6 +11,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatSortModule } from '@angular/material/sort';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
     imports: [
@@ -25,7 +27,9 @@ import { MatSortModule } from '@angular/material/sort';
         MatFormFieldModule,
         MatInputModule,
         MatChipsModule,
-        MatSortModule
+        MatSortModule,
+        MatProgressBarModule,
+        MatDividerModule
     ],
     exports: [
         MatButtonModule,
@@ -39,7 +43,9 @@ import { MatSortModule } from '@angular/material/sort';
         MatFormFieldModule,
         MatInputModule,
         MatChipsModule,
-        MatSortModule
+        MatSortModule,
+        MatProgressBarModule,
+        MatDividerModule
     ]
 })
 export class MaterialModule { }

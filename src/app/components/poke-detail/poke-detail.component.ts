@@ -10,8 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 export class PokeDetailComponent implements OnInit {
 
   pokemon: any = '';
-  pokemonImg = '';
-  pokemonType = [];
+  image = '';
 
   constructor(private activatedRouter: ActivatedRoute,
     private pokemonService: PokemonService) {
@@ -27,12 +26,11 @@ export class PokeDetailComponent implements OnInit {
   }
 
   getPokemon(id: any) {
-    this.pokemonService.getPokemons(id).subscribe(
+    this.pokemonService.getPokemon(id).subscribe(
       res => {
         console.log(res);
         this.pokemon = res;
-        this.pokemonImg = this.pokemon.sprites.front_default;
-        this.pokemonType = res.types[0].type.name;
+        this.image = this.pokemon.sprites.front_default;
       },
       err => {
         console.log(err);
