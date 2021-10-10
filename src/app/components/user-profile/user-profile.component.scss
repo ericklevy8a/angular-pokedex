@@ -18,7 +18,6 @@
 }
 
 .mat-card-title {
-  text-transform: uppercase;
   color: $black;
 }
 
@@ -32,6 +31,10 @@
 
 .mat-button {
   text-transform: uppercase;
+}
+
+mat-form-field {
+  width: 100%;
 }
 
 mat-label.upcase {

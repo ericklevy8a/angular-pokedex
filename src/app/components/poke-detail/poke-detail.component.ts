@@ -14,7 +14,6 @@ export class PokeDetailComponent implements OnInit {
 
   constructor(private activatedRouter: ActivatedRoute,
     private pokemonService: PokemonService) {
-    //obtiene parametro de la url
     this.activatedRouter.params.subscribe(
       params => {
         this.getPokemon(params['id']);

@@ -33,16 +33,17 @@ export class PokeTableComponent implements OnInit {
       this.pokemonService.getPokemon(i).subscribe(
         res => {
           pokemonData = {
-            position: res.id,
+            position: i,
             id: res.id,
             name: res.name,
             image: res.sprites.front_default,
             type: res.types[0].type.name
           };
           this.data.push(pokemonData);
+
           this.dataSource = new MatTableDataSource<any>(this.data);
           this.dataSource.paginator = this.paginator;
-          this.dataSource.sort = this.sort;
+
         },
         err => {
           console.log(err);
