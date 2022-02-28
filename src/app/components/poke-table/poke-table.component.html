@@ -2,15 +2,6 @@
   <mat-form-field>
     <mat-label>Search</mat-label>
     <input matInput type="text" (keyup)="applyFilter($event)" #input />
-    <!-- <button
-      *ngIf="searchField"
-      matSuffix
-      mat-icon-button
-      aria-label="Clear"
-      (click)="input.value = ''"
-    >
-      <mat-icon>close</mat-icon>
-    </button> -->
   </mat-form-field>
 
   <table mat-table [dataSource]="dataSource">
@@ -42,11 +33,7 @@
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr
-      mat-row
-      *matRowDef="let row; columns: displayedColumns"
-      (click)="getRow(row)"
-    ></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns" (click)="getRow(row)"></tr>
 
     <!-- Sin datos -->
     <tr class="mat-row" *matNoDataRow>
