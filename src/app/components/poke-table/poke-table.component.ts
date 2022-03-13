@@ -30,7 +30,6 @@ export class PokeTableComponent implements OnInit {
     let pokemonData = {};
 
     for (let i = 1; i <= 898; i++) {
-      console.log(i);
       this.pokemonService.getPokemon(i).subscribe(
         res => {
           pokemonData = {
@@ -41,10 +40,8 @@ export class PokeTableComponent implements OnInit {
             type: res.types[0].type.name
           };
           this.data.push(pokemonData);
-          console.log(pokemonData);
           this.dataSource = new MatTableDataSource<any>(this.data);
           this.dataSource.paginator = this.paginator;
-
         },
         err => {
           console.log(err);
